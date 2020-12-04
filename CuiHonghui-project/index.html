@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="./assets/css/index.css">
+
+</head>
+<body>
+
+<header class="header">
+    <div class="logo">
+        <img src="./assets/imgs/logo.png" alt="">
+    </div>
+    <div class="search">
+        <div class="details">
+            <img src="./assets/imgs/home.png" alt=""> &nbsp; | Contact Us &nbsp;
+            <input type="text" placeholder="Search">
+        </div>
+        <nav class="nav">
+            <a href="./index.html">HOME</a>
+            <a href="./computer.html">Computer science</a>
+            <a href="./teaching.html">Teaching Assistant</a>
+            <a href="./gpa.html"> GPA calculate</a>
+        </nav>
+    </div>
+</header>
+<hr>
+
+
+<div class="container">
+    <div class="left">
+        <div class="list">
+            <h2>The Latest NEWS</h2>
+            <img src="./assets/imgs/news2.jpg" alt="">
+            <p>  Association of American Universities issued a statement announcing that Brown University President Christina H. Paxson will serve as chair of the AAU Board of Directors.</p>
+            <p>  Association of American Universities issued a statement announcing that Brown University President Christina H. Paxson will serve as chair of the AAU Board of Directors.</p>
+        </div>
+    </div>
+
+    <div class="right">
+        <div class="news">
+            <h2>The Latest NEWS</h2>
+            <p>Association of American Universities issued a statement announcing that Brown University President Christina H. Paxson will serve as chair of the AAU Board of Directors.</p>
+        </div>
+        <div class="news">
+            <h2>student activities</h2>
+            <p>Association of American Universities issued a statement announcing that Brown University President Christina H. Paxson will serve as chair of the AAU Board of Directors.</p>
+        </div>
+        <div class="news">
+            <h2>student activities</h2>
+            <p>Association of American Universities issued a statement announcing that Brown University President Christina H. Paxson will serve as chair of the AAU Board of Directors.</p>
+        </div>
+        <div class="news">
+            <h2>The Latest NEWS</h2>
+            <p>Association of American Universities issued a statement announcing that Brown University President Christina H. Paxson will serve as chair of the AAU Board of Directors.</p>
+        </div>
+        <div class="news">
+            <h2>student activities</h2>
+            <p>Association of American Universities issued a statement announcing that Brown University President Christina H. Paxson will serve as chair of the AAU Board of Directors.</p>
+        </div>
+        <div class="news">
+            <h2>student activities</h2>
+            <p>Association of American Universities issued a statement announcing that Brown University President Christina H. Paxson will serve as chair of the AAU Board of Directors.</p>
+        </div>
+    </div>
+
+</div>
+
+<footer class="footer">
+        <p> © 2020 Honghui Cui 1842308003@qq.com. All Right Reserved. 联系我们</p>
+</footer>
+<script>
+    console.log(calculateAvGPA([2,'A'], [4, 'B']));
+
+    function calculateAvGPA(...reset){
+        const  inputs = reset;
+        let sumGrade = 0,
+            sumHours = 0;
+        inputs.forEach(i => {
+            sumGrade += i[0] * getGrade(i[1]);
+            sumHours += i[0]
+        });
+        return (sumGrade/sumHours).toFixed(2);
+    }
+
+    function getGrade(Letter){
+        switch (Letter) {
+            case 'A':
+                return 4;
+                break;
+            case 'B':
+                return 3;
+                break;
+            case 'C':
+                return 2;
+                break;
+            case 'D':
+                return 1;
+                break;
+            case 'F':
+                return 0;
+                break;
+            default:
+        }
+    }
+</script>
+</body>
+</html>

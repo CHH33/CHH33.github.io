@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            font-family: Source Han Sans CN;
+            overflow: hidden;
+        }
+
+        body {
+            margin: 20px;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+            margin-bottom: 20px;
+        }
+        .nav>a{
+            font-weight: 500;
+            color: black;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+        .nav>a:hover {
+            color: #8592c5;
+        }
+
+        .details {
+            text-align: right;
+            margin-bottom: 10px;
+        }
+
+
+        .footer {
+            position: absolute;
+            bottom: 0px;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        .footer p{
+            font-size: 12px;
+            text-align: center;
+        }
+
+
+        #form {
+            width: 400px;
+            margin: 100px auto;
+            text-align: center;
+        }
+
+        .input>input {
+            border: 1px solid #cccccc;
+            border-radius: 2px;
+            padding: 0 10px;
+            width: 200px;
+            height: 30px;
+            font-size: 18px;
+        }
+
+        .input {
+            font-size: 20px;
+            margin: 20px 0;
+        }
+        .btn {
+            display: inline-block;
+            box-sizing: border-box;
+            border: 1px solid #cccccc;
+            border-radius: 2px;
+            width: 100px;
+            height: 40px;
+            line-height: 40px;
+            font-size: 16px;
+            color: #666;
+            cursor: pointer;
+            background: white linear-gradient(180deg, #ffffff 0%, #f3f3f3 100%);
+        }
+
+        #infos {
+            display: none;
+            margin: 100px auto;
+        }
+
+    </style>
+    <script src="https://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+</head>
+<body>
+<header class="header">
+    <div class="logo">
+        <img src="./assets/imgs/logo.png" alt="">
+    </div>
+    <div class="search">
+        <div class="details">
+            <img src="./assets/imgs/home.png" alt=""> &nbsp; | Contact Us &nbsp;
+            <input type="text" placeholder="Search">
+        </div>
+        <nav class="nav">
+            <a href="./index.html">HOME</a>
+            <a href="./computer.html">Computer science</a>
+            <a href="./teaching.html">Teaching Assistant</a>
+            <a href="./gpa.html"> GPA calculate</a>
+        </nav>
+    </div>
+</header>
+<hr>
+<div class="container">
+    <form id="form">
+        <h2>LOGIN</h2>
+        <div class="input">
+            <label for="username">username: </label>
+            <input type="text" id="username" placeholder="admin" value="admin">
+        </div>
+        <div class="input">
+            <label for="password">password: </label>
+            <input type="password" id="password" value="root" placeholder="******">
+        </div>
+
+        <div class="input">
+            <div id="btn" class="btn">submit</div>
+        </div>
+
+    </form>
+    <table border="1" align="center" id="infos">
+        <tr>
+            <th colspan="6">
+                Student Information</th>
+        </tr>
+        <tr>
+            <th>name</th>
+            <th>ID</th>
+            <th>Gender</th>
+            <th>GPA</th>
+            <th>Submission Date</th>
+            <th>Comments</th>
+        </tr>
+        <tr>
+            <td>Jone</td>
+            <td>478913213</td>
+            <td>Man</td>
+            <td>3.5</td>
+            <td>2020-11-30</td>
+            <td>Good</td>
+        </tr>
+    </table>
+</div>
+
+
+<footer class="footer">
+       <p> © 2020 Honghui Cui 1842308003@qq.com. All Right Reserved. 联系我们</p>
+</footer>
+
+<script>
+    $("#btn").click(()=>{
+        const user = $("#username").val();
+        const password = $("#password").val();
+        console.log(user, password);
+        if(user === 'admin'&& password === 'root'){
+            alert("login success");
+            $("#form").hide();
+            $("#infos").show();
+        }else  {
+            alert("please entry correct username or password!")
+        }
+    })
+</script>
+
+</body>
+</html>

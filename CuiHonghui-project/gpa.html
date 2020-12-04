@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="./assets/css/index.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            font-family: Source Han Sans CN;
+            overflow: hidden;
+        }
+
+        body {
+            margin: 20px;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+            margin-bottom: 20px;
+        }
+        .nav>a{
+            font-weight: 500;
+            color: black;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+        .nav>a:hover {
+            color: #8592c5;
+        }
+
+        .details {
+            text-align: right;
+            margin-bottom: 10px;
+        }
+
+
+        .footer {
+            position: absolute;
+            bottom: 0px;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        .footer p{
+            font-size: 12px;
+            text-align: center;
+        }
+
+
+        #form {
+            width: 400px;
+            margin: 100px auto;
+            text-align: center;
+        }
+
+        .input>input {
+            border: 1px solid #cccccc;
+            border-radius: 2px;
+            padding: 0 10px;
+            width: 200px;
+            height: 30px;
+            font-size: 18px;
+        }
+
+        .input {
+            font-size: 20px;
+            margin: 20px 0;
+        }
+
+        .input textarea {
+            margin: 0px;
+            width: 399px;
+            height: 150px;
+            font-size: 16px;
+            padding: 10px;
+            text-align: left;
+        }
+        .input p {
+            text-align: left;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        .btn {
+            display: inline-block;
+            box-sizing: border-box;
+            border: 1px solid #cccccc;
+            border-radius: 2px;
+            width: 100px;
+            height: 40px;
+            line-height: 40px;
+            font-size: 16px;
+            color: #666;
+            cursor: pointer;
+            background: white linear-gradient(180deg, #ffffff 0%, #f3f3f3 100%);
+        }
+
+        #infos {
+            display: none;
+            margin: 100px;
+        }
+
+        h5 {
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .tools {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .GPA {
+            color: red;
+        }
+
+
+
+    </style>
+    <script src="https://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+</head>
+<body>
+
+<header class="header">
+    <div class="logo">
+        <img src="./assets/imgs/logo.png" alt="">
+    </div>
+    <div class="search">
+        <div class="details">
+            <img src="./assets/imgs/home.png" alt=""> &nbsp; | Contact Us &nbsp;
+            <input type="text" placeholder="Search">
+        </div>
+        <nav class="nav">
+            <a href="./index.html">HOME</a>
+            <a href="./computer.html">Computer science</a>
+            <a href="./teaching.html">Teaching Assistant</a>
+            <a href="./gpa.html"> GPA calculate</a>
+        </nav>
+    </div>
+</header>
+<hr>
+
+
+<div class="container">
+    <form id="form">
+        <h2>GPA calculation tool</h2>
+        <h5>you needs to enter the credit hours and letter grade for at least two courses.</h5>
+        <div class="input">
+            <p>please enter credit hours & letter grade of the following format, each groups should be separated by ;
+                example: you enter 2,A;2,B; you will get 3.5</p>
+            <textarea  id="hours">
+            </textarea>
+        </div>
+        <div class="tools">
+            <div id="btn" class="btn">submit</div>
+            <div class="GPA">
+                <span>your GPA is: </span>
+                <span id="GPA"></span>
+            </div>
+        </div>
+
+
+    </form>
+</div>
+
+<footer class="footer">
+        <p> © 2020 Honghui Cui 1842308003@qq.com. All Right Reserved. 联系我们</p>
+</footer>
+<script>
+
+    $('#btn').click(()=>{
+        let values = $("#hours").val();
+        if(values){
+            let value = values.trim().split(";");
+            let arr = value.filter(i=>i.length>0);
+
+            let newarr = arr.map(i=>{
+                let num = parseInt(i.split(",")[0], 10);
+                let str = i.split(",")[1];
+                return [num, str]
+                }
+            );
+            console.log(calculateAvGPA(...newarr));
+            $("#GPA").html(calculateAvGPA(...newarr))
+        }
+    })
+
+
+    function calculateAvGPA(...reset){
+        const  inputs = reset;
+        let sumGrade = 0,
+            sumHours = 0;
+        inputs.forEach(i => {
+            sumGrade += i[0] * getGrade(i[1]);
+            sumHours += i[0]
+        });
+        return (sumGrade/sumHours).toFixed(2);
+    }
+
+    function getGrade(Letter){
+        switch (Letter) {
+            case 'A':
+                return 4;
+                break;
+            case 'B':
+                return 3;
+                break;
+            case 'C':
+                return 2;
+                break;
+            case 'D':
+                return 1;
+                break;
+            case 'F':
+                return 0;
+                break;
+            default:
+        }
+    }
+</script>
+</body>
+</html>
